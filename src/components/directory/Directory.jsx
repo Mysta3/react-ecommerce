@@ -9,7 +9,7 @@ class Directory extends Component {
       sections: [
         {
           title: 'hats',
-          imageUrl: 'https://i.ibb.co/cvpntL1/hats.png',
+          imageUrl: 'https://i.imgur.com/4knRHS4.jpg',
           id: 1,
           linkUrl: 'shop/hats'
         },
@@ -27,7 +27,7 @@ class Directory extends Component {
         },
         {
           title: 'womens',
-          imageUrl: 'https://i.ibb.co/GCCdy8t/womens.png',
+          imageUrl: 'https://i.imgur.com/C5hT1Fb.jpg',
           size: 'large',
           id: 4,
           linkUrl: 'shop/womens'
