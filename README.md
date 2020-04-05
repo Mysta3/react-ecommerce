@@ -1,4 +1,6 @@
-React E-Commerce Store
+# React E-Commerce Store
 
-Credits: 
-Images: Unsplash.com
+## Credits: 
+### Images: 
+- Unsplash.com
+ 
