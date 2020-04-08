@@ -1,6 +1,7 @@
 import React from 'react';
 import './SignIn.scss';
 import FormInput from '../form-input/FormInput';
+import CustomButton from '../customButton/CustomButton';
 //will need to hold state for now
 class SignIn extends React.Component {
   constructor() {
@@ -17,7 +18,7 @@ class SignIn extends React.Component {
     this.setState({ [name]: value });
   };
   handleSubmit = event => {
-      //prevent default behavior
+    //prevent default behavior
     event.preventDefault();
 
     //clear form after submission
@@ -28,8 +29,8 @@ class SignIn extends React.Component {
   };
 
   render() {
-      //make form, required fields
-      //use a reuseable component for the form
+    //make form, required fields
+    //use a reuseable component for the form
     return (
       <div className="sign-in">
         <h2>I already have an account</h2>
@@ -51,7 +52,8 @@ class SignIn extends React.Component {
             value={this.state.password}
             required
           />
-          <input type="submit" value="Submt Form" />
+          {/* add reuseable customButton component */}
+          <CustomButton type="submit">SIGN IN</CustomButton>
         </form>
       </div>
     );
