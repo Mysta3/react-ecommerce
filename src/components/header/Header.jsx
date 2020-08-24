@@ -1,14 +1,17 @@
 import React from 'react';
-import {ReactComponent as Logo} from '../../assets/ROYL_clothing_logo.svg'
+import { ReactComponent as Logo } from '../../assets/ROYL_clothing_logo.svg';
 import './header.scss';
 import { Link } from 'react-router-dom';
 import { auth } from '../../firebase/firebase.utils';
+
+//REDUX IMPORTS
+import { connect } from 'react-redux';
 
 function Header({ currentUser }) {
   return (
     <div className="header">
       <Link className="logo-container" to="/">
-        <Logo className='logo'/>
+        <Logo className="logo" />
       </Link>
       <div className="options">
         <Link className="option" to="/shop">
@@ -31,4 +34,10 @@ function Header({ currentUser }) {
   );
 }
 
-export default Header;
+//state is the rootreducer
+const mapStateToProps = (state) =>({
+  currentUser: state.user.currentUser
+})
+
+
+export default connect(mapStateToProps)(Header);
