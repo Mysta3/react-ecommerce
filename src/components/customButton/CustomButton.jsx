@@ -2,10 +2,12 @@ import React from 'react';
 import './custom-button.scss';
 //pass in children props to dynamically render name of button
 //spread props through to customButton
-function CustomButton({ children, isGoogleSignIn, ...otherProps }) {
+function CustomButton({ children, isGoogleSignIn, inverted, ...otherProps }) {
   return (
     <button
-      className={`${isGoogleSignIn ? 'google-sign-in' : ''} custom-button`}
+      className={`${inverted ? 'inverted' : ''} ${
+        isGoogleSignIn ? 'google-sign-in' : ''
+      } custom-button`}
       {...otherProps}
     >
       {children}
