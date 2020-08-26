@@ -5,10 +5,11 @@ import { Link } from 'react-router-dom';
 //REDUX IMPORTS
 import { connect } from 'react-redux';
 import { auth } from '../../firebase/firebase.utils';
-
+import CartIcon from '../cart-icon/CartIcon';
+import CartDropdown from '../cart-dropdown/CartDropdown';
 import './header.scss';
 
-const Header = ({ currentUser}) => (
+const Header = ({ currentUser, hidden }) => (
   <div className="header">
     <Link className="logo-container" to="/">
       <Logo className="logo" />
@@ -23,20 +24,24 @@ const Header = ({ currentUser}) => (
       {currentUser ? (
         <div className="option" onClick={() => auth.signOut()}>
           SIGN OUT
-        </div>)
-           : 
-        (<Link className="option" to="/signin">
+        </div>
+      ) : (
+        <Link className="option" to="/signin">
           SIGN IN
         </Link>
-           )} 
+      )}
+      <CartIcon />
     </div>
+    {hidden ? null : <CartDropdown />}
   </div>
 );
 
 //state is the rootreducer
 //name can technically be anything but redux standard is mapStateToProps
-const mapStateToProps = (state) => ({
-  currentUser: state.user.currentUser,
+//destructures nested values
+const mapStateToProps = ({ user: { currentUser }, cart: { hidden } }) => ({
+  currentUser,
+  hidden,
 });
 
 //CONNECT - a HOF takes 2 args. 1 is the mapStateToProps
