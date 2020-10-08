@@ -7,7 +7,12 @@ import rootReducer from './root-reducer';
 // SETUP REDUX DEV TOOLS USING CHROME EXTENSION
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
-const middlewares = [logger];
+//removed logger from redux in production
+const middlewares = [];
+
+if (process.env.NODE_ENV === 'development') {
+  middlewares.push(logger);
+}
 
 export const store = createStore(
   rootReducer,
@@ -16,5 +21,4 @@ export const store = createStore(
 
 export const persistor = persistStore(store);
 
-
-export default {store, persistor};
+export default { store, persistor };
