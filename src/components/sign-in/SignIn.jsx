@@ -1,5 +1,5 @@
 import React from 'react';
-import './SignIn.scss';
+import {SignInContainer, ButtonStyles} from './SignIn.styled';
 import FormInput from '../form-input/FormInput';
 import CustomButton from '../customButton/CustomButton';
 import { auth, signInWithGoogle } from '../../firebase/firebase.utils';
@@ -21,10 +21,7 @@ class SignIn extends React.Component {
   handleSubmit = async event => {
     //prevent default behavior
     event.preventDefault();
-
     const {email, password} = this.state;
-
-
     try{
          await auth.signInWithEmailAndPassword(email, password);
          //clear form after submission
@@ -35,15 +32,13 @@ class SignIn extends React.Component {
        }catch(error){
       console.log(error)
     }
-    
-   
   };
 
   render() {
     //make form, required fields
     //use a reuseable component for the form
     return (
-      <div className="sign-in">
+      <SignInContainer>
         <h2>I already have an account</h2>
         <span>Sign in with your email and password</span>
         <form onSubmit={this.handleSubmit}>
@@ -64,14 +59,14 @@ class SignIn extends React.Component {
             required
           />
           {/* add reuseable customButton component */}
-          <div className="buttons">
+          <ButtonStyles>
             <CustomButton type="submit"> Sign in </CustomButton>
             <CustomButton onClick={signInWithGoogle} isGoogleSignIn>
               Sign in with Google
             </CustomButton>
-          </div>
+          </ButtonStyles>
         </form>
-      </div>
+      </SignInContainer>
     );
   }
 }
